@@ -1,25 +1,73 @@
-# README
+# Graphql Demo App
+Demonstrate GraphQL integration with Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tech Stack
+|              |                |
+| - | - |
+| Ruby version | ruby 2.7.6p219 |
+| Rails version  | 7.0.4.2 |
+| Database | sqlite3 |
+| Testing Framework | RSpec |
+| Query language | GraphQL |
 
-Things you may want to cover:
+# Usage
 
-* Ruby version
+Database creation and migration
+```
+rails db:create db:migrate
+```
 
-* System dependencies
+Database initialization
+``` 
+rails db:seed
+```
 
-* Configuration
+How to run the test suite
+```
+RAILS_ENV=test rspec spec
+```
 
-* Database creation
+Query Playground URL
+```
+http://localhost:3000/graphiql
+```
 
-* Database initialization
+GraphQL Queries
+```
+query ListUsers {
+  users {
+    name
+    email
+    postsCount
+    posts {
+      id
+      title
+    }
+  }
+}
 
-* How to run the test suite
+query GetUser {
+  user(id:1) {
+    name
+    email
+  }
+}
 
-* Services (job queues, cache servers, search engines, etc.)
+query ListPosts {
+  posts {
+    id
+    title
+    body
+  }
+}
 
-* Deployment instructions
+query GetPost {
+  post(id:1)  {
+    title
+    body
+  }
+}
 
-* ...
-# graphql-demo
+```
+![Screenshot 2023-02-03 at 13 46 22](https://user-images.githubusercontent.com/195928/216618769-767589bc-89ed-497a-9dec-884f5017e2b3.png)
+
