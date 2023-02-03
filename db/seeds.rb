@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+10.times do
+  user = FactoryBot.create(:user)
+  5.times do
+    FactoryBot.create(:post, user: user)
+  end
+end
