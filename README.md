@@ -33,9 +33,25 @@ http://localhost:3000/graphiql
 ```
 
 GraphQL Queries
-```
+```js
+query ListPosts {
+  posts {
+    id
+    title
+    body
+  }
+}
+
+query GetPost {
+  post(id: 1) {
+    title
+    body
+  }
+}
+
 query ListUsers {
   users {
+    id
     name
     email
     postsCount
@@ -47,27 +63,47 @@ query ListUsers {
 }
 
 query GetUser {
-  user(id:1) {
+  user(id: 49) {
     name
     email
   }
 }
 
-query ListPosts {
-  posts {
-    id
-    title
-    body
+mutation CreateUser {
+  createUser(input: {
+    email: "ripan@test.com", 
+    name: "ripan"
+  }) {
+    user {
+      id
+      name
+    }
+    errors
   }
 }
 
-query GetPost {
-  post(id:1)  {
-    title
-    body
+mutation UpdateUser {
+  updateUser(input: {
+    id: 59,
+    email: "ripan@testupdated.com", 
+    name: "ripan updated"
+  }) {
+    user {
+      id
+      name
+    }
+    errors
+  }
+}
+
+mutation DeleteUser {
+  deleteUser(input: {id: 59}) {
+    success
+    errors
   }
 }
 
 ```
-![Screenshot 2023-02-03 at 13 46 22](https://user-images.githubusercontent.com/195928/216618769-767589bc-89ed-497a-9dec-884f5017e2b3.png)
+
+<img width="1107" alt="Screenshot 2023-02-03 at 17 47 54" src="https://user-images.githubusercontent.com/195928/216672192-0a1ffa5f-87fa-42cd-819d-dc5c981bb622.png">
 
